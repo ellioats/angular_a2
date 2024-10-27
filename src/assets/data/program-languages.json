@@ -1,0 +1,78 @@
+[
+    {
+        "language": "JavaScript",
+        "percent": 62.3
+    },
+    {
+        "language": "HTML/CSS",
+        "percent": 52.9
+    },
+    {
+        "language": "Python",
+        "percent": 51
+    },
+    {
+        "language": "SQL",
+        "percent": 51
+    },
+    {
+        "language": "TypeScript",
+        "percent": 38.5
+    },
+    {
+        "language": "Bash/Shell",
+        "percent": 33.9
+    },
+    {
+        "language": "Java",
+        "percent": 30.3
+    },
+    {
+        "language": "C#",
+        "percent": 27.1
+    },
+    {
+        "language": "C++",
+        "percent": 20.3
+    },
+    {
+        "language": "C",
+        "percent": 19.34
+    },
+    {
+        "language": "PHP",
+        "percent": 18.2
+    },
+    {
+        "language": "PowerShell",
+        "percent": 13.8
+    },
+    {
+        "language": "Go",
+        "percent": 13.5
+    },
+    {
+        "language": "Rust",
+        "percent": 12.6
+    },
+    {
+        "language": "Kotlin",
+        "percent": 9.4
+    },
+    {
+        "language": "Lua",
+        "percent": 6.2
+    },
+    {
+        "language": "Dart",
+        "percent": 6
+    },
+    {
+        "language": "Assembly",
+        "percent": 5.4
+    },
+    {
+        "language": "Ruby",
+        "percent": 5.2
+    }
+]
