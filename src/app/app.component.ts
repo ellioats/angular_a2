@@ -6,7 +6,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 const CHART_TITLE = "Top Programming Languages";
-
+const PIE_CHART_TEXT = "Pie Chart";
+const BAR_CHART_TEXT = "Bar Chart";
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,12 @@ export class AppComponent {
   title = 'Assignment2-elliotcurrie';
   counter = 0;
   public languages: any;
+  chartSwitch: boolean = false;
+  // false -> bar graph
+  // true -> pie graph
+
+  chartSwitchText: string = PIE_CHART_TEXT;
+
 
 
   dataHeadings: string[] = [];
@@ -32,7 +39,10 @@ export class AppComponent {
     await this.loadJson();
   }
 
-  // chart specific properties
+
+
+
+
   chartType: ChartType = "bar";
   chartData: ChartData = { datasets: [] };
 
@@ -65,6 +75,68 @@ export class AppComponent {
 
   };
 
+
+
+
+  changeChartState(): void {
+    // change chart switch boolean 
+    this.chartSwitch = (this.chartSwitch == true) ? false : true; // TEST
+
+    this.chartSwitchText = (this.chartSwitch == false) ? PIE_CHART_TEXT : BAR_CHART_TEXT;
+
+
+    this.chartType = (this.chartSwitch) ? "pie" : "bar";
+    this.chartData = {
+
+      labels: this.dataHeadings,
+      datasets: [{
+        label: "percent",
+        data: this.dataValues,
+        backgroundColor: '',
+        borderColor: '',
+        borderWidth: 1
+      }]
+
+    };
+
+    // responsive options
+    this.chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      indexAxis: 'y',
+      plugins: {
+        title: {
+          display: true,
+          text: CHART_TITLE,
+          font: {
+            size: 12
+          }
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            font: {
+              size: 8
+            },
+            color: 'black',
+            padding: 20,
+            boxWidth: 20,
+          }
+        }
+      }
+
+    };
+
+
+
+  }
+
+  // chart specific properties
+
+
+
+
   constructor(private http: HttpClient) {
 
     // this.loadJson();
@@ -75,6 +147,9 @@ export class AppComponent {
     // let testLabels = ['A', 'B'];
     // let testData = [100, 200];
     // let testBgColors = ["#ff3d3366"];
+
+    // if condition for graph changing button here?
+
     let testBdColors = ["#ff3d33ff"];
 
     this.chartData = {

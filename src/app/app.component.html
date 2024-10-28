@@ -1,5 +1,9 @@
 <header>Top Programming Languages</header>
-<p>Most popular programming languages among developers</p>
+<div class="switch-display">
+  <p>Most popular programming languages among developers</p>
+  <button (click)="changeChartState()"> {{ chartSwitchText }} </button>
+
+</div>
 <ul>
   <li>Source: <a
       href="https://survey.stackoverflow.co/2024/technology#1-programming-scripting-and-markup-languages">StackOverflow</a>

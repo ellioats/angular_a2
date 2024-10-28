@@ -37,3 +37,8 @@ table {
     border-collapse: collapse;
     border: 0px;
 }
+
+.switch-display {
+    display: flex;
+    justify-content: space-between;
+}
