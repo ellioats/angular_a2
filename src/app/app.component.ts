@@ -6,8 +6,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 const CHART_TITLE = "Top Programming Languages";
-const PIE_CHART_TEXT = "Pie Chart";
-const BAR_CHART_TEXT = "Bar Chart";
+const ABOUT_ME_SECTION = "Assignment 2, JSON Data Visualization with ng2-charts - Elliot Currie - Sheridan College";
+
+const CALLER_1 = "btn1";
+const CALLER_2 = "btn2";
+const CALLER_3 = "btn3";
 
 @Component({
   selector: 'app-root',
@@ -22,13 +25,15 @@ export class AppComponent {
   title = 'Assignment2-elliotcurrie';
   counter = 0;
   public languages: any;
-  chartSwitch: boolean = false;
+  chartSwitch: number = 0;
+  showAboutMe : boolean = false;
+  aboutMeText : string = ABOUT_ME_SECTION;
   // false -> bar graph
   // true -> pie graph
 
-  chartSwitchText: string = PIE_CHART_TEXT;
-
-
+  cal1 = CALLER_1;
+  cal2 = CALLER_2;
+  cal3 = CALLER_3;
 
   dataHeadings: string[] = [];
   dataValues: number[] = [];
@@ -38,10 +43,6 @@ export class AppComponent {
   async ngOnInit() {
     await this.loadJson();
   }
-
-
-
-
 
   chartType: ChartType = "bar";
   chartData: ChartData = { datasets: [] };
@@ -75,17 +76,33 @@ export class AppComponent {
 
   };
 
-
-
+  changeChartSwitch(caller : string) : void {
+    switch(caller) {
+      case CALLER_1: // bar
+        this.chartSwitch = 0;
+        break;
+      case CALLER_2: // pie
+        this.chartSwitch = 1;
+        break;
+      case CALLER_3: // radar 
+        this.chartSwitch = 2;
+        break;
+    }
+    
+    this.changeChartState();
+  
+  }
 
   changeChartState(): void {
     // change chart switch boolean 
-    this.chartSwitch = (this.chartSwitch == true) ? false : true; // TEST
+    if (this.chartSwitch == 0) { // bar 
+      this.chartType = "bar";
+    } else if (this.chartSwitch == 1) { // pie
+      this.chartType = "pie";
+    } else if (this.chartSwitch == 2) { // radar
+      this.chartType = "radar";
+    }
 
-    this.chartSwitchText = (this.chartSwitch == false) ? PIE_CHART_TEXT : BAR_CHART_TEXT;
-
-
-    this.chartType = (this.chartSwitch) ? "pie" : "bar";
     this.chartData = {
 
       labels: this.dataHeadings,
@@ -127,28 +144,15 @@ export class AppComponent {
       }
 
     };
-
-
-
   }
 
-  // chart specific properties
-
-
+  // reverses about me value
+  aboutMe() : void {
+    this.showAboutMe = (this.showAboutMe) ? false : true;
+  }
 
 
   constructor(private http: HttpClient) {
-
-    // this.loadJson();
-    // this.loadJson();
-
-
-    // implementing test data
-    // let testLabels = ['A', 'B'];
-    // let testData = [100, 200];
-    // let testBgColors = ["#ff3d3366"];
-
-    // if condition for graph changing button here?
 
     let testBdColors = ["#ff3d33ff"];
 

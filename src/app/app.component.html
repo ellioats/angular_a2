@@ -1,38 +1,53 @@
 <header>Top Programming Languages</header>
-<div class="switch-display">
-  <p>Most popular programming languages among developers</p>
-  <button (click)="changeChartState()"> {{ chartSwitchText }} </button>
-
-</div>
-<ul>
-  <li>Source: <a
-      href="https://survey.stackoverflow.co/2024/technology#1-programming-scripting-and-markup-languages">StackOverflow</a>
-  </li>
-  <li># of Respondents: 60,171</li>
-</ul>
-<div class="flexbox">
-  <div class="col1">
-    <table border="1" style="margin-top: 20px; width: 100%">
-      <thead>
-        <tr>
-          <th>Language</th>
-          <th>Percent</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of languages">
-          <td>{{ item.language }}</td>
-          <td>{{ item.percent }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="page-content" [class.blurred]="showAboutMe">
+  <div class="switch-display" >
+    <p>Most popular programming languages among developers</p>
+    <div class="switch-display-2">
+      <button (click)="changeChartSwitch(cal1)">Bar</button>
+      <button (click)="changeChartSwitch(cal2)">Pie</button>
+      <button (click)="changeChartSwitch(cal3)">Radar</button>
+      <button (click)="aboutMe()">About</button>
+    </div>
   </div>
-  <div class="col2">
-    <canvas baseChart [type]="chartType" [data]="chartData" [options]="chartOptions">
+  <ul>
+    <li>Source: <a
+        href="https://survey.stackoverflow.co/2024/technology#1-programming-scripting-and-markup-languages">StackOverflow</a>
+    </li>
+    <li># of Respondents: 60,171</li>
+  </ul>
+  <div class="flexbox">
+    <div class="col1">
+      <table border="1" style="margin-top: 20px; width: 100%">
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Percent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of languages">
+            <td>{{ item.language }}</td>
+            <td>{{ item.percent }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col2">
+      <canvas baseChart [type]="chartType" [data]="chartData" [options]="chartOptions">
 
-    </canvas>
+      </canvas>
+    </div>
   </div>
 </div>
+
+<div *ngIf="showAboutMe" class="overlay">
+  <div class="about-content">
+    <h2>About</h2>
+    <p> {{ aboutMeText }}</p>
+    <button (click)="aboutMe()">Close</button>
+  </div>
+</div>
+
 
 <footer>
   2024, Elliot Currie - <a href="mailto:emwcurrie@gmail.com">Contact</a>
